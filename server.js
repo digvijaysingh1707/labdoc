@@ -15,7 +15,7 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // Serve the main HTML page
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'home.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('/home.html', (req, res) => {
