@@ -16,7 +16,7 @@
   <!-- 
     - favicon
   -->
-  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="./assets/images/favicon.svg" type="image/svg+xml">
 
   <!-- 
     - google font link
@@ -31,13 +31,41 @@
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  
+  <!-- Custom CSS (existing) -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
   <!-- 
     - preload images
   -->
   <link rel="preload" as="image" href="./assets/images/hero-banner.png">
   <link rel="preload" as="image" href="./assets/images/hero-bg.png">
 
-</head>
+  <style>
+    /* Define a specific height for the map to make it visible */
+    #map {
+      height: 300px; /* Adjust as needed */
+      width: 600px; /* Full width */
+    }
+  </style>
+
+  <script>
+    function initMap() {
+      const myLocation = [26.265380, 81.505678];
+      const map = L.map('map').setView(myLocation, 12); // Initialize Leaflet map
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+      }).addTo(map); // Add OpenStreetMap tiles
+      const marker = L.marker(myLocation).addTo(map); // Add a marker
+      marker.bindPopup('My Location'); // Optional popup
+    }
+  </script>
+
 
 <body id="top">
 
@@ -61,12 +89,11 @@
     <div class="container">
 
       <a href="./home.html" class="logo">
-        <img src="./favicon.svg" width="68" height="24" alt="LapDoc home">
+        <img src="./assets/images/favicon.svg" width="68" height="24" alt="LapDoc home">
       </a>
-
-      <h1 class="headline-lg hero-title" >
+      <a href="./home.html" class="logo-tx" >
         LapDoc
-      </h1>
+      </a>
       
 
       <nav class="navbar" data-navbar>
@@ -74,8 +101,12 @@
         <div class="navbar-top">
 
           <a href="./home.html" class="logo">
-            <img src="./favicon.svg" width="68" height="24" alt="LapDoc home">
+            <img src="./assets/images/favicon.svg" width="68" height="24" alt="LapDoc home">
+
           </a>
+          <b href="./home.html" class="logo-tx" >
+            LapDoc
+          </b>
 
           <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
             <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
@@ -141,7 +172,6 @@
 
     </div>
   </header>
-
 
 
 
@@ -227,10 +257,11 @@
                   Get help for your emotional wellbeing. Links for blogs and tests related your mental health and personality
                 </p>
 
-                <button class="btn-circle" aria-label="read more about psychiatry">
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </button>
-
+                <a href="psychiatry.html">
+                  <button class="btn-circle" aria-label="read more about psychiatry">
+                    <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                  </button>
+                </a>
               </div>
             </li>
 
@@ -322,6 +353,7 @@
         <div class="container">
 
           <p class="section-subtitle title-lg text-center" id="blog-label" data-reveal="bottom">
+            <br>
             News & Article
           </p>
 
@@ -386,7 +418,7 @@
         <div class="footer-brand" data-reveal="bottom">
 
           <a href="#" class="logo">
-            <img src="./assets/images/logo.svg" width="136" height="46" loading="lazy" alt="LapDoc home">
+            <img src="./assets/images/favicon.svg" width="34" height="11" loading="lazy" alt="LapDoc home">
           </a>
 
           <ul class="contact-list has-after">
@@ -422,6 +454,8 @@
           </ul>
 
         </div>
+              
+          
 
         <ul class="footer-list" data-reveal="bottom">
 
@@ -487,7 +521,13 @@
 
         </ul>
 
+        <body onload="initMap()">
+          <div id="map"></div>
+        </body>
+
       </div>
+      
+     
 
       <div class="footer-bottom">
 
@@ -527,6 +567,7 @@
         </ul>
 
       </div>
+
 
     </div>
   </footer>
