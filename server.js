@@ -34,6 +34,32 @@ app.get('/sign_up.html', (req, res) => {
 res.sendFile(path.join(__dirname, 'sign_up.html'));
 });
 
+app.get('/contact.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'contact.html'));
+  });
+
+app.get('/doctors.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'doctors.html'));
+  });
+
+app.get('/psychiatry.html', (req, res) => {
+res.sendFile(path.join(__dirname, 'psychiatry.html'));
+});
+
+app.get('/pulmonology.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'pulmonology.html'));
+  });
+
+
+app.get('/gynecology.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'gynecology.html'));
+  });
+  
+    
+app.get('/orthopedics.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'orthopedics.html'));
+  });
+  
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
