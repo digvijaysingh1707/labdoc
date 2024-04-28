@@ -9,8 +9,8 @@
   <!-- 
     - primary meta tags
   -->
-  <title>LapDoc - home</title>
-  <meta name="title" content="LapDoc - home">
+  <title>LapDoc - Psychiatry</title>
+  <meta name="title" content="LapDoc - Psychiatry">
   <meta name="description" content="This is a madical website">
 
   <!-- 
@@ -31,41 +31,37 @@
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-  
-  <!-- Custom CSS (existing) -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!-- Leaflet JavaScript -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
   <!-- 
     - preload images
   -->
   <link rel="preload" as="image" href="./assets/images/hero-banner.png">
   <link rel="preload" as="image" href="./assets/images/hero-bg.png">
 
-  <style>
-    /* Define a specific height for the map to make it visible */
-    #map {
-      height: 300px; /* Adjust as needed */
-      width: 600px; /* Full width */
-    }
-  </style>
 
   <script>
-    function initMap() {
-      const myLocation = [26.265380, 81.505678];
-      const map = L.map('map').setView(myLocation, 12); // Initialize Leaflet map
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors',
-      }).addTo(map); // Add OpenStreetMap tiles
-      const marker = L.marker(myLocation).addTo(map); // Add a marker
-      marker.bindPopup('My Location'); // Optional popup
+    // Fetch and display blog posts
+    async function fetchBlogPosts() {
+      const response = await fetch('/api/blog'); // Fetch blog data from the server
+      const blogPosts = await response.json(); // Parse the JSON response
+
+      const blogContainer = document.getElementById('blog-posts'); // Get the container for the posts
+      blogContainer.innerHTML = ''; // Clear existing content
+
+      blogPosts.forEach(post => {
+        const blogEntry = document.createElement('div'); // Create a new div for each post
+        blogEntry.innerHTML = `
+          <h2>${post.title}</h2>
+          <p>By ${post.author} on ${new Date(post.publishedDate).toLocaleDateString()}</p>
+          <p>${post.content}</p>
+        `;
+        blogContainer.appendChild(blogEntry); // Add the post to the container
+      });
     }
+
+    document.addEventListener('DOMContentLoaded', fetchBlogPosts); // Fetch posts when the DOM is loaded
   </script>
 
+</head>
 
 <body id="top">
 
@@ -94,7 +90,6 @@
       <a href="./home.html" class="logo-tx" >
         LapDoc
       </a>
-      
 
       <nav class="navbar" data-navbar>
 
@@ -102,11 +97,10 @@
 
           <a href="./home.html" class="logo">
             <img src="./assets/images/favicon.svg" width="68" height="24" alt="LapDoc home">
-
           </a>
-          <b href="./home.html" class="logo-tx" >
+          <a href="./home.html" class="logo-tx" >
             LapDoc
-          </b>
+          </a>
 
           <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
             <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
@@ -121,7 +115,7 @@
           </li>
 
           <li class="navbar-item">
-            <a href="doctors.html" class="navbar-link title-md">Doctors</a>
+            <a href="#" class="navbar-link title-md">Doctors</a>
           </li>
 
           <li class="navbar-item">
@@ -129,11 +123,11 @@
           </li>
 
           <li class="navbar-item">
-            <a href="blog.html" class="navbar-link title-md">Blog</a>
+            <a href="#" class="navbar-link title-md">Blog</a>
           </li>
 
           <li class="navbar-item">
-            <a href="contact.html" class="navbar-link title-md">Contact</a>
+            <a href="#" class="navbar-link title-md">Contact</a>
           </li>
 
         </ul>
@@ -176,6 +170,7 @@
 
 
 
+
   <main>
     <article>
 
@@ -191,163 +186,19 @@
             <p class="hero-subtitle has-before" data-reveal="left">Welcome To LapDoc</p>
 
             <h1 class="headline-lg hero-title" data-reveal="left">
-              Find Your <br>
-              Disease.
+              You Are Not <br>
+              Alone
             </h1>
-
-            <div class="hero-card" data-reveal="left">
-
-              <p class="title-lg card-text">
-                Search signs, symptoms, conditions, etc.
-              </p>
-
-              <div class="wrapper">
-
-                <div class="input-wrapper title-lg">
-                  <input type="text" name="location" placeholder="Type What You Feel" class="input-field">
-
-                  <ion-icon name="search"></ion-icon>
-                </div>
-
-                <button class="btn has-before">
-                  <ion-icon name="search"></ion-icon>
-
-                  <span class="span title-md">Find Now</span>
-                </button>
-
-              </div>
-
-            </div>
 
           </div>
 
           <figure class="hero-banner" data-reveal="right">
-            <img src="./assets/images/hero-banner.png" width="590" height="517" loading="eager" alt="hero banner"
+            <img src="./assets/images/psychiatry.jpg" width="590" height="517" loading="eager" alt="hero banner"
               class="w-100">
           </figure>
 
         </div>
       </section>
-
-
-
-
-
-      <!-- 
-        - #SERVICE
-      -->
-
-      <section class="service" aria-label="service">
-        <div class="container">
-
-          <ul class="service-list">
-
-            <li>
-              <div class="service-card" data-reveal="bottom">
-
-                <div class="card-icon">
-                  <img src="./assets/images/icon-1.png" width="71" height="71" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="headline-sm card-title">
-                  <a href="psychiatry.html">Psychiatry</a>
-                </h3>
-
-                <p class="card-text">
-                  Get help for your emotional wellbeing. Links for blogs and tests related your mental health and personality
-                </p>
-
-                <a href="psychiatry.html">
-                  <button class="btn-circle" aria-label="read more about psychiatry">
-                    <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                  </button>
-                </a>
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card" data-reveal="bottom">
-
-                <div class="card-icon">
-                  <img src="./assets/images/icon-2.png" width="71" height="71" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="headline-sm card-title">
-                  <a href="gynecology.html">Gynecology</a>
-                </h3>
-
-                <p class="card-text">
-                  Get help for yourself and your loved once. Links for blogs and tips for Female health as well as helplines for Gynecologist
-                </p>
-
-                <a href="gynecology.html">
-                <button class="btn-circle" aria-label="read more about Gynecology">
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </button>
-                </a>
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card" data-reveal="bottom">
-
-                <div class="card-icon">
-                  <img src="./assets/images/icon-3.png" width="71" height="71" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="headline-sm card-title">
-                  <a href="pulmonology.html">Pulmonology</a>
-                </h3>
-
-                <p class="card-text">
-                  Get help when every second matters. Links for blog and vital techniques to save someone life, along Emergency Helplines
-                </p>
-
-                <a href="pulmonology.html">
-                <button class="btn-circle" aria-label="read more about Pulmonology">
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </button>
-                </a>
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card" data-reveal="bottom">
-
-                <div class="card-icon">
-                  <img src="./assets/images/icon-4.png" width="71" height="71" loading="lazy" alt="icon">
-                </div>
-
-                <h3 class="headline-sm card-title">
-                  <a href="orthopedics.html">Orthopedics</a>
-                </h3>
-
-                <p class="card-text">
-                  Get help to reduce pain & fatal injuries. Links for blog for remedies for fast recovery as well as Emergency Helplines
-                </p>
-
-                <a href="orthopedics.html">
-                <button class="btn-circle" aria-label="read more about Orthopedics">
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </button>
-                </a>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-      </section>
-
-
-
-
-
-
-
-
-
 
       <!-- 
         - #BLOG
@@ -423,7 +274,8 @@
 
           <a href="#" class="logo">
             <img src="./assets/images/favicon.svg" width="34" height="11" loading="lazy" alt="LapDoc home">
-          </a>
+
+        </a>
 
           <ul class="contact-list has-after">
 
@@ -458,8 +310,6 @@
           </ul>
 
         </div>
-              
-          
 
         <ul class="footer-list" data-reveal="bottom">
 
@@ -525,13 +375,7 @@
 
         </ul>
 
-        <body onload="initMap()">
-          <div id="map"></div>
-        </body>
-
       </div>
-      
-     
 
       <div class="footer-bottom">
 
@@ -571,7 +415,6 @@
         </ul>
 
       </div>
-
 
     </div>
   </footer>

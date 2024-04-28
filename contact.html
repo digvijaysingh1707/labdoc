@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: hsl(186, 100%, 19%);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(22, 200, 212, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 32px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background-color: #f9f9f9;
+    }
+
+    .contact-item img {
+      border-radius: 50%;
+      margin-right: 20px;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-item h2 {
+      margin: 0;
+      color: #333;
+      font-size: 20px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-item p {
+      margin: 5px 0 0;
+      color: #888;
+    }
+
+    textarea {
+      width: calc(100% - 40px);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      resize: none;
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+
+      .contact-item {
+        padding: 10px;
+      }
+
+      .contact-item img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    /* Creative Design */
+    .container:before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #f7f7f7, #fff, #f7f7f7);
+      z-index: -1;
+      transform: rotate(-5deg);
+    }
+
+    .container:after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #f7f7f7, #fff, #f7f7f7);
+      z-index: -1;
+      transform: rotate(5deg);
+    }
+
+    .contact-item {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-item:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+      z-index: -1;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .contact-item:hover:before {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Contact Us</h1>
+    <ul class="contact-list">
+      <li class="contact-item">
+        <img src="assets/images/images.jpg" alt="John Doe">
+        <div>
+          <h2>Divyaansh Vats</h2>
+          <p>Email: divyaanshv14@gmail.com</p>
+          <p>Phone: +1234567890</p>
+        </div>
+      </li>
+      <li class="contact-item">
+        <img src="/assets/images/images1.jpg" alt="Jane Smith">
+        <div>
+          <h2>Digvjijay Singh</h2>
+          <p>Email: digvijays17072003@gmail.com</p>
+          <p>Phone: +9876543210</p>
+        </div>
+      </li>
+      <!-- Add more contact items as needed -->
+    </ul>
+    <form id="query-form">
+      <label for="query">Any Queries?</label>
+      <textarea id="query" name="query" rows="4" placeholder="Type your message here..." required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
